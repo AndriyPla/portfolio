@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg:#0f1724;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+/* Simple utility to reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important}
+}
+
+/* small, tasteful defaults */
+body{
+  @apply bg-white text-slate-800 antialiased;
+}
+
+.dark body{
+  @apply bg-slate-900 text-slate-200;
+}
+
+.container-max{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
