@@ -3,6 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { projects, getProjectBySlug } from '../../../src/data/projects'
 
+export async function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }))
+}
+
 export default function ProjectPage({params}:{params:{slug:string}}){
   const project = getProjectBySlug(params.slug)
   if(!project) return <div>Project not found</div>

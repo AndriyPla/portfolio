@@ -1,5 +1,4 @@
-"use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './globals.css'
 import Header from '../src/components/Header'
 import Footer from '../src/components/Footer'
@@ -10,15 +9,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }:{children:React.ReactNode}){
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-
-  // Read theme from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark') document.documentElement.classList.add('dark')
-  }, [])
-
   return (
     <html lang="en">
       <body>
