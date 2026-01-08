@@ -1,0 +1,25 @@
+{
+  // Use the workspace TypeScript version
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Tailwind CSS IntelliSense settings
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "css": "css",
+    "scss": "scss",
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "editor.quickSuggestions": { "strings": true },
+
+  // Suppress unknown at-rule warnings for Tailwind directives in the editor
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+
+  // Disable built-in CSS validation if you prefer Tailwind extension to handle it
+  // "css.validate": false,
+
+  // Recommend using workspace extensions
+  "extensions.ignoreRecommendations": false
+}

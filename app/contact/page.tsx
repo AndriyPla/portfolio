@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 export default function Contact(){
   const [state, setState] = useState({status:'idle', message:''})
 
+  const ENABLE_SERVER = process.env.NEXT_PUBLIC_ENABLE_SERVER_CONTACT === 'true'
+
   async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
     e.preventDefault()
     const form = e.currentTarget
@@ -57,12 +59,16 @@ export default function Contact(){
 
           <div className="flex items-center gap-3">
             <button type="submit" className="px-4 py-2 bg-accent text-white rounded">Send message</button>
-            <button type="button" onClick={()=>{
-              // Switch form action to Option B (server)
-              const form = document.querySelector('form')
-              if(form) form.setAttribute('data-option','b')
-            }} className="px-3 py-2 border rounded">Use server (Option B)</button>
-            <div className="text-sm text-slate-500">Option A (Formspree): set the form action to your Formspree URL. Option B: click the button to switch to server send.</div>
+            {ENABLE_SERVER ? (
+              <button type="button" onClick={()=>{
+                // Switch form action to Option B (server)
+                const form = document.querySelector('form')
+                if(form) form.setAttribute('data-option','b')
+              }} className="px-3 py-2 border rounded">Use server (Option B)</button>
+            ) : (
+              <div className="px-3 py-2 text-sm text-slate-500 bg-slate-50 dark:bg-slate-800 rounded">Server send disabled for static export</div>
+            )}
+            <div className="text-sm text-slate-500">Option A (Formspree): set the form action to your Formspree URL. Option B: requires server support and must be enabled via env var.</div>
           </div>
         </form>
 
